@@ -43,7 +43,7 @@ Atomik::set(array (
         ),
         'Config',
         'Db' => array(
-            'dsn'         => 'mysql:host=localhost;dbname=gifts',
+            'dsn'         => 'mysql:host=localhost;dbname=cadals',
             'username'    => 'root',
             'password'    => ''
         ),
