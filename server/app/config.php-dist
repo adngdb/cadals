@@ -1,0 +1,54 @@
+<?php
+
+Atomik::set(array (
+  'app' =>
+      array (
+        'layout' => '_layout',
+        'default_action' => 'home',
+        'views' =>
+        array (
+          'file_extension' => '.phtml',
+        ),
+      ),
+  'atomik' =>
+      array (
+        'start_session' => true,
+        'class_autoload' => true,
+        'trigger' => 'action',
+        'catch_errors' => true,
+        'display_errors' => true,
+        'debug' => true,
+        'url_rewriting' => true,
+        'base_url' => 'http://localhost/cadals',
+      ),
+  'styles' =>
+      array (),
+  'plugins' =>
+      array (
+        'Auth' => array(
+            'allowed_pages' => '',
+            'forbidden_pages' => '*',
+            'login_page' => 'login',
+            'redirect_page' => 'lists',
+            'all_admin' => false,
+            'db' => array(
+                'table' => 'users',
+                'fields' => array(
+                    'id' => 'id',
+                    'login' => 'email',
+                    'password' => 'password',
+                    'role' => 'role',
+                ),
+            ),
+        ),
+        'Config',
+        'Db' => array(
+            'dsn'         => 'mysql:host=localhost;dbname=gifts',
+            'username'    => 'root',
+            'password'    => ''
+        ),
+      ),
+  'scripts' =>
+      array (),
+  'contact_mail' => 'someone@example.org',
+));
