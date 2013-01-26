@@ -1,5 +1,5 @@
 
-define(['./config'], function (config) {
+define(['./config', './events'], function (config, events) {
     var login = $('.login').get(0);
 
     login.render = function(item) {
@@ -14,7 +14,7 @@ define(['./config'], function (config) {
     }
 
     function next_view() {
-        $('.events').get(0).open();
+        events.open();
     }
 
     function is_connected(onsuccess, onfailure) {
