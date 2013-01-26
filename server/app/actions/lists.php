@@ -18,6 +18,7 @@ class ListsService extends JsonWebServiceBase {
                 'id' => $value['id'],
                 'name' => $value['event_name'],
                 'description' => $value['description'],
+                'date' => $value['date'],
             );
             $output['owned_lists'][] = $list;
         }
@@ -36,6 +37,7 @@ class ListsService extends JsonWebServiceBase {
                 'id' => $value['id'],
                 'name' => $value['event_name'],
                 'description' => $value['description'],
+                'date' => $value['date'],
             );
             $output['accessible_lists'][] = $list;
         }
