@@ -29,7 +29,7 @@ Atomik::set(array (
             'allowed_pages' => '',
             'forbidden_pages' => '*',
             'login_page' => 'login',
-            'redirect_page' => 'lists',
+            'redirect_page' => false,
             'all_admin' => false,
             'db' => array(
                 'table' => 'users',
