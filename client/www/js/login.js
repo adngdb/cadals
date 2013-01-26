@@ -34,6 +34,7 @@ define(['./config'], function (config) {
             'user_name': user_name,
             'user_password': user_password
         }, function (data) {
+            data = JSON.parse(data);
             if (data['status'] === 'Connected') {
                 onsuccess.call();
             }
@@ -48,9 +49,7 @@ define(['./config'], function (config) {
         var user_name = el.find('input[name=user_name]').val();
         var user_password = el.find('input[name=user_password]').val();
 
-        connect(user_name, user_password, function () {
-            next_view();
-        });
+        connect(user_name, user_password, next_view);
     });
 
     return {
