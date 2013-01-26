@@ -21,7 +21,6 @@ define(function(require) {
             d.getFullYear();
     }
 
-    var list = $('.list').get(0);
     var events = $('.events').get(0);
 
     // Login view
