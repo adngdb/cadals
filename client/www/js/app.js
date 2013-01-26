@@ -3,6 +3,7 @@
 // http://requirejs.org/docs/api.html#define
 
 define(function(require) {
+    "use strict";
     // Receipt verification (https://github.com/mozilla/receiptverifier)
     require('receiptverifier');
 
@@ -14,29 +15,36 @@ define(function(require) {
 
     // Write your app here.
 
-
     function formatDate(d) {
         return (d.getMonth()+1) + '/' +
             d.getDate() + '/' +
             d.getFullYear();
     }
 
+    var list = $('.list').get(0);
+    var events = $('.events').get(0);
+
+    // Login view
+
+    var login = require('./login');
+    login.is_connected(function () {
+        login.next_view();
+    }, function () {
+        login.open();
+    });
+
     // List view
 
-    var list = $('.list').get(0);
-    list.add({ title: 'Learn this template',
-               desc: 'This is a list-detail template. Learn more ' +
-                     'about it at its ' +
-                     '<a href="https://github.com/mozilla/mortar-list-detail">project page!</a>',
-               date: new Date() });
-    list.add({ title: 'Make things',
-               desc: 'Make this look like that',
-               date: new Date(12, 9, 5) });
-    for(var i=0; i<8; i++) {
-        list.add({ title: 'Move stuff',
-                   desc: 'Move this over there',
-                   date: new Date(12, 10, 1) });
-    }
+    var lists = null;
+    $.getJSON(config.host + 'lists', function (lists) {
+        for (var i = 0; i < lists.owned_lists.length; i++) {
+            var mylist = lists.owned_lists[i];
+            list.add({
+                'title': mylist.name,
+                'desc': mylist.description,
+            });
+        }
+    });
 
     // Detail view
 
