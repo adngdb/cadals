@@ -4,6 +4,15 @@ include '_base.php';
 
 class ListsService extends JsonWebServiceBase {
 
+    public function _list_from_db($value) {
+        return array(
+            'id' => intval($value['id']),
+            'name' => stripslashes($value['event_name']),
+            'description' => stripslashes($value['description']),
+            'date' => $value['date'],
+        );
+    }
+
     public function get() {
         $output = array(
             'owned_lists' => array(),
@@ -14,13 +23,7 @@ class ListsService extends JsonWebServiceBase {
         $owned_lists = Atomik_Db::findAll('gifts_lists', array('user_id' => AuthPlugin::getId()));
 
         foreach ($owned_lists as $key => $value) {
-            $list = array(
-                'id' => $value['id'],
-                'name' => $value['event_name'],
-                'description' => $value['description'],
-                'date' => $value['date'],
-            );
-            $output['owned_lists'][] = $list;
+            $output['owned_lists'][] = $this->_list_from_db($value);
         }
 
         // Lists the user has access to
@@ -33,13 +36,7 @@ class ListsService extends JsonWebServiceBase {
         $access_lists = Atomik_Db::query($query);
 
         foreach ($access_lists as $key => $value) {
-            $list = array(
-                'id' => $value['id'],
-                'name' => $value['event_name'],
-                'description' => $value['description'],
-                'date' => $value['date'],
-            );
-            $output['accessible_lists'][] = $list;
+            $output['accessible_lists'][] = $this->_list_from_db($value);
         }
 
         return $output;
