@@ -21,8 +21,6 @@ define(function(require) {
             d.getFullYear();
     }
 
-    var events = $('.events').get(0);
-
     // Login view
 
     var login = require('./login');

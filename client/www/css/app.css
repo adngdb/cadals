@@ -35,3 +35,20 @@ x-view.edit .field {
 
 ul li {
 }
+
+.own:before,
+.access:before {
+    border-radius: 3px;
+    font-size: 0.6em;
+    margin-right: 5px;
+    padding: 2px 4px;
+    vertical-align: top;
+}
+.own:before {
+    background-color: #FF3636;
+    content: 'OWNED';
+}
+.access:before {
+    background-color: #366BFF;
+    content: 'ACCESS';
+}
