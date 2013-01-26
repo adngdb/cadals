@@ -7,10 +7,13 @@ define(['./config'], function (config) {
 
     function prepare() {
         event.render = function(item) {
-            //console.log(item.get('id'));
-            $('.title', this).html(item.get('title'));
-            $('.desc', this).html(item.get('desc'));
-            $('.date', this).html(item.get('date'));
+            var self = this;
+            $.get(config.host + 'list'+'?id='+item.id, function (data) {
+                console.log(data);
+                $('.title', self).html(item.get('title'));
+                $('.desc', self).html(item.get('desc'));
+                $('.date', self).html(item.get('date'));
+            });
         };
     }
 

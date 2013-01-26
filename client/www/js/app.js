@@ -30,9 +30,16 @@ define(function(require) {
         login.open();
     });
 
+
     // Detail view
     var event = require('./event');
     event.prepare();
+
+
+
+    // Giftlist view
+    var gifts = require('./giftslist');
+    gifts.open();
 
 
 
