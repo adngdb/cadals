@@ -33,19 +33,6 @@ define(function(require) {
         login.open();
     });
 
-    // List view
-
-    var lists = null;
-    $.getJSON(config.host + 'lists', function (lists) {
-        for (var i = 0; i < lists.owned_lists.length; i++) {
-            var mylist = lists.owned_lists[i];
-            list.add({
-                'title': mylist.name,
-                'desc': mylist.description,
-            });
-        }
-    });
-
     // Detail view
 
     var detail = $('.detail').get(0);
