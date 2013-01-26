@@ -16,6 +16,7 @@ define(['./config'], function (config) {
 
             for (var i=0; i < data.owned_lists.length; i++){
                 listsToShow.push({
+                    'id': data.owned_lists[i].id,
                     'title': data.owned_lists[i].name,
                     'date': data.owned_lists[i].date,
                     'desc': data.owned_lists[i].description
@@ -24,6 +25,7 @@ define(['./config'], function (config) {
 
             for (var i=0; i < data.accessible_lists.length; i++){
                 listsToShow.push({
+                    'id': data.accessible_lists[i].id,
                     'title': data.accessible_lists[i].name,
                     'date': data.accessible_lists[i].date,
                     'desc': data.accessible_lists[i].description
@@ -32,13 +34,9 @@ define(['./config'], function (config) {
 
             // short list by title
             listsToShow.sort(compare);
-            console.log(listsToShow);
+            //console.log(listsToShow);
             for (var i=0; i < listsToShow.length; i++){
-                events.add({
-                    'title': listsToShow[i].title,
-                    'desc': listsToShow[i].desc,
-                    'date':listsToShow[i].date
-                });
+                events.add(listsToShow[i]);
             };
 
 

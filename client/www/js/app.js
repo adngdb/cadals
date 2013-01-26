@@ -33,13 +33,10 @@ define(function(require) {
     });
 
     // Detail view
+    var event = require('./event');
+    event.prepare();
 
-    var detail = $('.detail').get(0);
-    detail.render = function(item) {
-        $('.title', this).html(item.get('title'));
-        $('.desc', this).html(item.get('desc'));
-        $('.date', this).text(formatDate(item.get('date')));
-    };
+
 
     // Edit view
 
