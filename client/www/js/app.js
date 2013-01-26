@@ -21,8 +21,6 @@ define(function(require) {
             d.getFullYear();
     }
 
-    var events = $('.events').get(0);
-
     // Login view
 
     var login = require('./login');
@@ -32,9 +30,16 @@ define(function(require) {
         login.open();
     });
 
+
     // Detail view
     var event = require('./event');
     event.prepare();
+
+
+
+    // Giftlist view
+    var gifts = require('./giftslist');
+    gifts.open();
 
 
 

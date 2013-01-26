@@ -37,6 +37,15 @@
       </header>
     </x-listview>
 
+    <x-listview class="gifts list">
+      <header>
+        <h1>J'aimerai...</h1>
+        <button class="add" data-view=".edit" data-animation="slideDown">+</button>
+      </header>
+    </x-listview>
+
+
+
     <x-view class="detail">
       <header>
         <h1>Details</h1>
@@ -46,6 +55,8 @@
       <h1 class="title"></h1>
       <p class="desc"></p>
       <p class="date"></p>
+      <button class="add" data-view=".gifts" data-animation="slideDown">Mes souhaits...</button>
+      <button class="add" data-view=".accesslist" data-animation="slideDown">Mes invites...</button>
     </x-view>
 
     <x-view class="edit">

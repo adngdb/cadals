@@ -38,8 +38,6 @@ define(['./config'], function (config) {
             for (var i=0; i < listsToShow.length; i++){
                 events.add(listsToShow[i]);
             };
-
-
         });
     }
 
