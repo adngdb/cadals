@@ -9,35 +9,31 @@ define(['./config'], function (config) {
         return 0;
     }
 
-    function open(){
+    function open() {
         events.open();
         $.get(config.host + 'lists', function (data) {
             var listsToShow = [];
 
-            for (var i=0; i < data.owned_lists.length; i++){
-                listsToShow.push({
-                    'id': data.owned_lists[i].id,
-                    'title': data.owned_lists[i].name,
-                    'date': data.owned_lists[i].date,
-                    'desc': data.owned_lists[i].description
-                });
-            };
+            function pushList(list) {
+                for (var i = 0, l = list.length; i < l; i++) {
+                    var item = list[i];
+                    listsToShow.push({
+                        'id': item.id,
+                        'title': item.name,
+                        'date': item.date,
+                        'desc': item.description
+                    });
+                }
+            }
 
-            for (var i=0; i < data.accessible_lists.length; i++){
-                listsToShow.push({
-                    'id': data.accessible_lists[i].id,
-                    'title': data.accessible_lists[i].name,
-                    'date': data.accessible_lists[i].date,
-                    'desc': data.accessible_lists[i].description
-                });
-            };
+            pushList(data.owned_lists);
+            pushList(data.accessible_lists);
 
             // short list by title
             listsToShow.sort(compare);
-            //console.log(listsToShow);
-            for (var i=0; i < listsToShow.length; i++){
+            for (var i = 0, l = listsToShow.length; i < l; i++) {
                 events.add(listsToShow[i]);
-            };
+            }
         });
     }
 
