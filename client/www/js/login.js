@@ -19,7 +19,6 @@ define(['./config', './events'], function (config, events) {
 
     function is_connected(onsuccess, onfailure) {
         $.get(config.host + 'login', function (data) {
-            console.log('Connected? ');
             if (data['status'] === 'Connected') {
                 onsuccess.call();
             }
@@ -34,7 +33,6 @@ define(['./config', './events'], function (config, events) {
             'user_name': user_name,
             'user_password': user_password
         }, function (data) {
-            data = JSON.parse(data);
             if (data['status'] === 'Connected') {
                 onsuccess.call();
             }
